@@ -22,9 +22,9 @@
           {{ city }}
         </a>
       </li>
+      <p *ngIf="searchedCities && searchedCities.length <= 0 && !isSearching">
+        City not found
+      </p>
     </ul>
-    <p *ngIf="searchedCities && searchedCities.length <= 0 && !isSearching">
-      City not found
-    </p>
   </div>
 </form>
