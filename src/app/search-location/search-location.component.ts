@@ -24,8 +24,8 @@ export class SearchLocationComponent implements AfterViewInit {
   @ViewChild('citySearchInput') cityInput!: ElementRef;
   @Output() setcityEvent = new EventEmitter<{ city: string }>();
 
+  userInput: string = '';
   cities: string[] = [];
-  isSearching: boolean = false;
   searchedCities: any = [];
 
   constructor() {
@@ -44,27 +44,27 @@ export class SearchLocationComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.citySearch();
+    this.setupCitySearch();
+    2;
   }
 
-  citySearch() {
-    const search$ = fromEvent(this.cityInput.nativeElement, 'keyup').pipe(
-      map((event: any) => event.target.value),
+  setupCitySearch() {
+    const search$: Observable<string[]> = fromEvent<Event>(
+      this.cityInput.nativeElement,
+      'keyup'
+    ).pipe(
+      map((event: Event) => (event.target! as HTMLInputElement).value),
       debounceTime(300),
       distinctUntilChanged(),
-      tap(() => (this.isSearching = true)),
-      switchMap((cityName) =>
-        cityName ? this.getCity(cityName) : of<any>(this.cities)
-      )
+      switchMap((cityName) => (cityName ? this.getCities(cityName) : of([])))
     );
 
     search$.subscribe((data) => {
-      this.isSearching = false;
       this.searchedCities = data;
     });
   }
 
-  getCity(city: string): Observable<any> {
+  getCities(city: string): Observable<string[]> {
     return of(this.filterCities(city));
   }
 
