@@ -14,15 +14,17 @@
       [(ngModel)]="userInput"
     />
     <ul
-      [hidden]="!searchedCities.length && !userInput"
+      [hidden]="!(searchedCities$ | async)?.length && !userInput"
       class="dropdown-menu col-sm-4"
     >
-      <li *ngFor="let city of searchedCities">
+      <li *ngFor="let city of searchedCities$ | async">
         <a class="dropdown-item" (click)="setCityName(city)">
           {{ city }}
         </a>
       </li>
-      <p *ngIf="!searchedCities.length && userInput">City not found</p>
+      <p *ngIf="!(searchedCities$ | async)?.length && userInput">
+        City not found
+      </p>
     </ul>
   </div>
 </div>

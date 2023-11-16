@@ -13,6 +13,7 @@ import {
   distinctUntilChanged,
   switchMap,
   tap,
+  shareReplay,
 } from 'rxjs/operators';
 
 @Component({
@@ -26,7 +27,8 @@ export class SearchLocationComponent implements AfterViewInit {
 
   userInput: string = '';
   cities: string[] = [];
-  searchedCities: any = [];
+
+  searchedCities$: Observable<string[]> = of([]);
 
   constructor() {
     this.cities = [
@@ -45,23 +47,20 @@ export class SearchLocationComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.setupCitySearch();
-    2;
   }
 
   setupCitySearch() {
-    const search$: Observable<string[]> = fromEvent<Event>(
+    this.searchedCities$ = fromEvent<Event>(
       this.cityInput.nativeElement,
       'keyup'
     ).pipe(
       map((event: Event) => (event.target! as HTMLInputElement).value),
+      map((query) => query.trim()),
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((cityName) => (cityName ? this.getCities(cityName) : of([])))
+      switchMap((cityName) => (cityName ? this.getCities(cityName) : of([]))),
+      shareReplay()
     );
-
-    search$.subscribe((data) => {
-      this.searchedCities = data;
-    });
   }
 
   getCities(city: string): Observable<string[]> {
@@ -75,7 +74,7 @@ export class SearchLocationComponent implements AfterViewInit {
   }
 
   setCityName(city: string) {
-    this.searchedCities = this.filterCities(city);
+    // this.searchedCities = this.filterCities(city);
     this.setcityEvent.emit({ city });
     this.cityInput.nativeElement.value = city;
   }
