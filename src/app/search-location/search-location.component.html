@@ -1,20 +1,30 @@
 <form class="row">
-  <div class="col-auto mr-auto">
+  <div class="col-auto">
     <button class="btn btn-light" type="submit">
       <i class="fa fa-search"></i>
     </button>
   </div>
-  <div class="col-12 col-sm-6 col-md-8">
+  <div class="col-sm-7">
     <input
       class="form-control dropdown-toggle"
       data-bs-toggle="dropdown"
       #citySearchInput
       placeholder="search city"
     />
-    <ul class="dropdown-menu">
-      <div *ngFor="let city of searchedCities" (click)="setCityName(city)">
-        {{ city }}
-      </div>
+    <ul class="dropdown-menu col-sm-4">
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          *ngFor="let city of searchedCities"
+          (click)="setCityName(city)"
+        >
+          {{ city }}
+        </a>
+      </li>
     </ul>
+    <p *ngIf="searchedCities && searchedCities.length <= 0 && !isSearching">
+      City not found
+    </p>
   </div>
 </form>
