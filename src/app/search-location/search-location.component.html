@@ -1,13 +1,20 @@
-<nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
+<form class="row">
+  <div class="col-auto mr-auto">
     <button class="btn btn-light" type="submit">
       <i class="fa fa-search"></i>
     </button>
+  </div>
+  <div class="col-12 col-sm-6 col-md-8">
     <input
-      class="form-control mr-sm-2 city-search"
-      type="search"
-      placeholder="Search for city"
-      aria-label="Search"
+      class="form-control dropdown-toggle"
+      data-bs-toggle="dropdown"
+      #citySearchInput
+      placeholder="search city"
     />
-  </form>
-</nav>
+    <ul class="dropdown-menu">
+      <div *ngFor="let city of searchedCities" (click)="setCityName(city)">
+        {{ city }}
+      </div>
+    </ul>
+  </div>
+</form>

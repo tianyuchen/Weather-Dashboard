@@ -12,13 +12,10 @@ import { TemperatureComponent } from './weather/temperature/temperature.componen
     AppComponent,
     HeaderComponent,
     SearchLocationComponent,
-    TemperatureComponent
+    TemperatureComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
