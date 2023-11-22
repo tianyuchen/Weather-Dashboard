@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchLocationComponent } from './search-location/search-location.component';
 import { TemperatureComponent } from './weather/temperature/temperature.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { TemperatureComponent } from './weather/temperature/temperature.componen
     HeaderComponent,
     SearchLocationComponent,
     TemperatureComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

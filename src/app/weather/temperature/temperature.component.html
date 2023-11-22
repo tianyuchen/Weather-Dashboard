@@ -1,8 +1,30 @@
-<div class="card">
+<section class="weather-card mt-5 d-flex flex-column">
   <h3>Today</h3>
-  <h4>{{ weathers[0].city }}</h4>
-  <div class="current-temperature">
-    <h2>{{ weathers[0].currTemp }}</h2>
-  </div>
-  <h4>{{ weathers[0].weatherType }}</h4>
-</div>
+  <ng-container *ngIf="cityWeather$ | async as weather">
+    <div class="row mt-4 g-2 d-flex align-items-center">
+      <i class="fa-solid fa-location-dot col-auto"></i>
+      <div class="col-auto">
+        <span class="city-name">{{ weather.city }}</span>
+      </div>
+    </div>
+
+    <div class="row mt-5 d-flex align-items-center">
+      <div class="weather-icon__container" [ngSwitch]="true">
+        <img
+          *ngSwitchCase="weather.type === 'Sunny'"
+          src="assets/weather-icons/sunny.png"
+        />
+        <img
+          *ngSwitchCase="weather.type === 'Cloudy'"
+          src="assets/weather-icons/sunny-cloudy.png"
+        />
+      </div>
+      <div class="col-auto mr-auto">
+        <span class="curr-temp">{{ weather.currTemp }} &deg;</span>
+      </div>
+    </div>
+    <div class="text-center mt-auto">
+      <button class="btn btn-primary" type="button">More</button>
+    </div>
+  </ng-container>
+</section>

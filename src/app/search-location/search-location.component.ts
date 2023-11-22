@@ -23,7 +23,7 @@ import {
 })
 export class SearchLocationComponent implements AfterViewInit {
   @ViewChild('citySearchInput') cityInput!: ElementRef;
-  @Output() setcityEvent = new EventEmitter<{ city: string }>();
+  @Output() setcityEvent = new EventEmitter<string>();
 
   userInput: string = '';
   cities: string[] = [];
@@ -73,9 +73,8 @@ export class SearchLocationComponent implements AfterViewInit {
     );
   }
 
-  setCityName(city: string) {
-    // this.searchedCities = this.filterCities(city);
-    this.setcityEvent.emit({ city });
+  selectCity(city: string) {
+    this.setcityEvent.emit(city);
     this.cityInput.nativeElement.value = city;
   }
 }

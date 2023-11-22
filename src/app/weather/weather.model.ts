@@ -5,7 +5,7 @@
 export interface Weather {
   city: string;
   currTemp: number;
-  weatherType: string;
+  type: string;
   minTemp: number;
   maxTemp: number;
 }

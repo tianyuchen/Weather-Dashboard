@@ -1,0 +1,31 @@
+.weather-card{
+    box-shadow: 0 0 0.5rem rgba(0, 0, 255, 0.1);
+    justify-items: center;
+    padding: 2rem;
+    width: 30rem;
+    height: 30rem;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 1.75rem;
+}
+
+.city-name {
+    text-transform: uppercase;
+    font-size: 1.0rem;
+    letter-spacing: 0.1rem;
+}
+
+.curr-temp{
+    font-size: 2.6rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1rem;
+}
+
+.weather-icon__container {
+    width: 5rem;
+    margin-right: 1.5rem;
+  }
+  
+  .weather-icon__container > img {
+    width: 5rem;
+  }

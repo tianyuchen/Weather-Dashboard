@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Weather } from './weather.model';
+import { Observable, filter, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,16 +10,26 @@ export class WeatherService {
     {
       city: 'Zurich',
       currTemp: 8,
-      weatherType: 'Cloudy',
+      type: 'Cloudy',
       minTemp: 2,
       maxTemp: 9,
     },
-    // new Weather('Paris', 10, 'Sunny', 3, 12),
+    {
+      city: 'Paris',
+      currTemp: 10,
+      type: 'Sunny',
+      minTemp: 3,
+      maxTemp: 12,
+    },
   ];
 
   constructor() {}
 
-  getWeatherData(cityName: string) {
-    return this.weatherData;
+  getWeatherData(cityName: string): Observable<Weather | undefined> {
+    return of(this.weatherData).pipe(
+      map((weatherList) =>
+        weatherList.find((weather) => weather.city === cityName)
+      )
+    );
   }
 }
