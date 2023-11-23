@@ -11,12 +11,16 @@
     <div class="row mt-5 d-flex align-items-center">
       <div class="weather-icon__container" [ngSwitch]="true">
         <img
-          *ngSwitchCase="weather.type === 'Sunny'"
+          *ngSwitchCase="weather.type === 'sunny'"
           src="assets/weather-icons/sunny.png"
         />
         <img
-          *ngSwitchCase="weather.type === 'Cloudy'"
+          *ngSwitchCase="weather.type === 'cloudy'"
           src="assets/weather-icons/sunny-cloudy.png"
+        />
+        <img
+          *ngSwitchCase="weather.type === 'rainy'"
+          src="assets/weather-icons/rainy.png"
         />
       </div>
       <div class="col-auto mr-auto">

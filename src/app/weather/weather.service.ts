@@ -10,16 +10,23 @@ export class WeatherService {
     {
       city: 'Zurich',
       currTemp: 8,
-      type: 'Cloudy',
+      type: 'cloudy',
       minTemp: 2,
       maxTemp: 9,
     },
     {
       city: 'Paris',
       currTemp: 10,
-      type: 'Sunny',
+      type: 'rainy',
       minTemp: 3,
       maxTemp: 12,
+    },
+    {
+      city: 'Wuhan',
+      currTemp: 22,
+      type: 'sunny',
+      minTemp: 18,
+      maxTemp: 25,
     },
   ];
 

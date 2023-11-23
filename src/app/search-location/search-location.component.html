@@ -15,7 +15,7 @@
       [hidden]="!(searchedCities$ | async)?.length && !userInput"
       class="dropdown-menu col-sm-4"
     >
-      <li *ngFor="let city of searchedCities$ | async">
+      <li *ngFor="let city of (searchedCities$ | async) || []">
         <a class="dropdown-item" (click)="selectCity(city)">
           {{ city }}
         </a>

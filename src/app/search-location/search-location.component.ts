@@ -56,7 +56,7 @@ export class SearchLocationComponent implements AfterViewInit {
     ).pipe(
       map((event: Event) => (event.target! as HTMLInputElement).value),
       map((query) => query.trim()),
-      debounceTime(300),
+      debounceTime(200),
       distinctUntilChanged(),
       switchMap((cityName) => (cityName ? this.getCities(cityName) : of([]))),
       shareReplay()
@@ -75,6 +75,6 @@ export class SearchLocationComponent implements AfterViewInit {
 
   selectCity(city: string) {
     this.setcityEvent.emit(city);
-    this.cityInput.nativeElement.value = city;
+    this.cityInput.nativeElement.value = '';
   }
 }

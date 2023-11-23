@@ -19,9 +19,11 @@ export class TemperatureComponent implements OnChanges, OnInit {
   @Input() city: string = '';
 
   constructor(private weatherService: WeatherService) {}
+
   ngOnInit(): void {
     this.cityWeather$ = this.weatherService.getWeatherData('Paris');
   }
+
   ngOnChanges(changes: SimpleChanges): void {
     this.getWeatherByCity();
   }
