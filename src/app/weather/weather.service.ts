@@ -28,6 +28,13 @@ export class WeatherService {
       minTemp: 18,
       maxTemp: 25,
     },
+    {
+      city: 'Adliswil',
+      currTemp: 4,
+      type: 'snowy',
+      minTemp: 0,
+      maxTemp: 7,
+    },
   ];
 
   constructor() {}

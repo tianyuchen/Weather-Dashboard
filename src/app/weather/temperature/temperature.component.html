@@ -22,6 +22,10 @@
             *ngSwitchCase="weather.type === 'rainy'"
             src="assets/weather-icons/rainy.png"
           />
+          <img
+            *ngSwitchCase="weather.type === 'snowy'"
+            src="assets/weather-icons/snowy.png"
+          />
         </div>
         <div>
           <span class="curr-temp">{{ weather.currTemp }}&deg;</span>
