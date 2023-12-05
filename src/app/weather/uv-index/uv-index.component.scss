@@ -1,0 +1,29 @@
+.uv-card {
+  box-shadow: 0 0 0.5rem rgba(0, 0, 255, 0.1);
+  justify-items: center;
+  padding: 2rem;
+  width: 30rem;
+  height: 20rem;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 1.75rem;
+}
+
+.ct-series-a .ct-bar,
+.ct-series-a .ct-line,
+.ct-series-a .ct-point,
+.ct-series-a .ct-slice-donut {
+  stroke: blue;
+}
+
+.ct-series-b .ct-bar,
+.ct-series-b .ct-line,
+.ct-series-b .ct-point,
+.ct-series-b .ct-slice-donut {
+  stroke: #bbbbbb;
+}
+
+.uv-chart {
+  height: 20rem;
+  width: 25rem;
+}
