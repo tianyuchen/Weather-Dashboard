@@ -5,6 +5,7 @@ import {
   AfterViewInit,
   Output,
   ViewChild,
+  OnDestroy,
 } from '@angular/core';
 import { of, fromEvent, Observable, merge } from 'rxjs';
 import {
@@ -23,7 +24,7 @@ import { LocalStorageService } from '../shared/local-storage.service';
   templateUrl: './search-location.component.html',
   styleUrls: ['./search-location.component.scss'],
 })
-export class SearchLocationComponent implements AfterViewInit {
+export class SearchLocationComponent implements AfterViewInit, OnDestroy {
   @ViewChild('citySearchInput') cityInput!: ElementRef;
   @Output() setcityEvent = new EventEmitter<string>();
 
@@ -54,17 +55,19 @@ export class SearchLocationComponent implements AfterViewInit {
     this.setupCitySearch();
   }
 
+  ngOnDestroy(): void {
+    this.localStorageService.clearData();
+  }
+
   setupCitySearch() {
-    // this.searchedHistory$ = fromEvent<Event>(
-    //   this.cityInput.nativeElement,
-    //   'click'
-    // ).pipe(
-    //   map((event: Event) =>
-    //     JSON.parse(
-    //       this.localStorageService.getData('search-history') || ''
-    //     ).filter((val: string) => val != null)
-    //   )
-    // );
+    this.searchedHistory$ = fromEvent<Event>(
+      this.cityInput.nativeElement,
+      'click'
+    ).pipe(
+      map((event: Event) =>
+        JSON.parse(this.localStorageService.getData('search-history') || '[]')
+      )
+    );
 
     this.searchedCities$ = fromEvent<Event>(
       this.cityInput.nativeElement,
@@ -78,7 +81,7 @@ export class SearchLocationComponent implements AfterViewInit {
       shareReplay()
     );
 
-    // this.mergedResult$ = merge(this.searchedHistory$, this.searchedCities$);
+    this.mergedResult$ = merge(this.searchedHistory$, this.searchedCities$);
   }
 
   getCities(city: string): Observable<string[]> {
@@ -96,20 +99,14 @@ export class SearchLocationComponent implements AfterViewInit {
     this.cityInput.nativeElement.value = '';
 
     this.searchHistory = JSON.parse(
-      this.localStorageService.getData('search-history') || ''
+      this.localStorageService.getData('search-history') || '[]'
     );
-
-    this.localStorageService.setItem(
-      'search-history',
-      JSON.stringify(this.searchHistory)
-    );
-
-    // if (this.searchHistory.indexOf(city) == -1) {
-    //   this.searchHistory.push(city);
-    //   this.localStorageService.setItem(
-    //     'search-history',
-    //     JSON.stringify(this.searchHistory)
-    //   );
-    // }
+    if (this.searchHistory.indexOf(city) == -1) {
+      this.searchHistory.push(city);
+      this.localStorageService.setItem(
+        'search-history',
+        JSON.stringify(this.searchHistory)
+      );
+    }
   }
 }
