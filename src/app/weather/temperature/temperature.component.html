@@ -7,26 +7,33 @@
         <span class="city-name">{{ weather.city }}</span>
       </div>
     </div>
-
-    <div class="row mt-5 d-flex align-items-center">
-      <div class="weather-icon__container" [ngSwitch]="true">
-        <img
-          *ngSwitchCase="weather.type === 'sunny'"
-          src="assets/weather-icons/sunny.png"
-        />
-        <img
-          *ngSwitchCase="weather.type === 'cloudy'"
-          src="assets/weather-icons/sunny-cloudy.png"
-        />
-        <img
-          *ngSwitchCase="weather.type === 'rainy'"
-          src="assets/weather-icons/rainy.png"
-        />
+    <div class="row mt-5">
+      <div class="col-9 d-flex align-items-center">
+        <div class="weather-icon__container" [ngSwitch]="true">
+          <img
+            *ngSwitchCase="weather.type === 'sunny'"
+            src="assets/weather-icons/sunny.png"
+          />
+          <img
+            *ngSwitchCase="weather.type === 'cloudy'"
+            src="assets/weather-icons/sunny-cloudy.png"
+          />
+          <img
+            *ngSwitchCase="weather.type === 'rainy'"
+            src="assets/weather-icons/rainy.png"
+          />
+        </div>
+        <div>
+          <span class="curr-temp">{{ weather.currTemp }}&deg;</span>
+        </div>
       </div>
-      <div class="col-auto mr-auto">
-        <span class="curr-temp">{{ weather.currTemp }} &deg;</span>
+      <div class="col-3">
+        <span class="row">High: {{ weather.maxTemp }}&deg;</span>
+        <span class="row">Low: {{ weather.minTemp }}&deg;</span>
+        <span class="row">Feels Like: {{ weather.currTemp }}&deg;</span>
       </div>
     </div>
+
     <div class="text-center mt-auto">
       <button class="btn btn-primary" type="button">More</button>
     </div>
