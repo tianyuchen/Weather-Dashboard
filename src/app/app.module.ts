@@ -10,6 +10,7 @@ import { TemperatureComponent } from './weather/temperature/temperature.componen
 import { HomeComponent } from './home/home.component';
 import { SunriseSunsetComponent } from './weather/sunrise-sunset/sunrise-sunset.component';
 import { UvIndexComponent } from './weather/uv-index/uv-index.component';
+import { CityWeatherComponent } from './weather/city-weather/city-weather.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UvIndexComponent } from './weather/uv-index/uv-index.component';
     HomeComponent,
     SunriseSunsetComponent,
     UvIndexComponent,
+    CityWeatherComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

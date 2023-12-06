@@ -13,6 +13,7 @@ export class WeatherService {
       type: 'cloudy',
       minTemp: 2,
       maxTemp: 9,
+      uvIndex: 2,
     },
     {
       city: 'Paris',
@@ -20,6 +21,7 @@ export class WeatherService {
       type: 'rainy',
       minTemp: 3,
       maxTemp: 12,
+      uvIndex: 3,
     },
     {
       city: 'Wuhan',
@@ -27,6 +29,7 @@ export class WeatherService {
       type: 'sunny',
       minTemp: 18,
       maxTemp: 25,
+      uvIndex: 5,
     },
     {
       city: 'Adliswil',
@@ -34,6 +37,7 @@ export class WeatherService {
       type: 'snowy',
       minTemp: 0,
       maxTemp: 7,
+      uvIndex: 1,
     },
   ];
 

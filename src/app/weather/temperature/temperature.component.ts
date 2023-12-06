@@ -1,34 +1,15 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { WeatherService } from '../weather.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Weather } from '../weather.model';
-import { Subscription, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-temperature',
   templateUrl: './temperature.component.html',
   styleUrls: ['./temperature.component.scss'],
 })
-export class TemperatureComponent implements OnChanges, OnInit {
-  cityWeather$: Observable<Weather | undefined> = of(undefined);
-  @Input() city: string = '';
+export class TemperatureComponent implements OnInit {
+  @Input() weather!: Weather;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.cityWeather$ = this.weatherService.getWeatherData('Paris');
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.getWeatherByCity();
-  }
-
-  getWeatherByCity() {
-    this.cityWeather$ = this.weatherService.getWeatherData(this.city);
-  }
+  ngOnInit(): void {}
 }

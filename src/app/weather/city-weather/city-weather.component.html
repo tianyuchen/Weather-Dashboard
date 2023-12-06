@@ -1,0 +1,4 @@
+<div *ngIf="cityWeather$ | async as weather">
+  <app-temperature [weather]="weather"></app-temperature>
+  <app-uv-index [uvIndex]="weather.uvIndex"></app-uv-index>
+</div>
