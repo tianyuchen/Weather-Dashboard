@@ -13,9 +13,7 @@ import {
   map,
   distinctUntilChanged,
   switchMap,
-  tap,
   shareReplay,
-  filter,
 } from 'rxjs/operators';
 import { LocalStorageService } from '../shared/local-storage.service';
 

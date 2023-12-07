@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  city: string = '';
+  city: string = 'Zurich';
 
   selectCity(cityName: string) {
     this.city = cityName;

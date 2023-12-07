@@ -6,7 +6,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { PieChart } from 'chartist';
-// import * as Chartist from 'chartist';
 
 @Component({
   selector: 'app-uv-index',
