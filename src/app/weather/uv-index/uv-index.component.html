@@ -1,7 +1,12 @@
 <section class="uv-card">
   <h5>UV Index</h5>
   <div id="chart" class="uv-chart"></div>
-  <span class="uv-index_text">{{ this.uvIndex }} UV</span>
+  <div class="uv-index">
+    <span class="uv-index_text">{{ this.uvIndex }} </span>
+    <span class="uv-index_unit"> UV </span>
+  </div>
+
   <span class="uv-min-level_text">0</span>
   <span class="uv-max-level_text">12</span>
+  <span class="uv-level_text">{{ this.uvLevel }} Risk of UV Rays</span>
 </section>

@@ -21,7 +21,7 @@ export class WeatherService {
       type: 'rainy',
       minTemp: 3,
       maxTemp: 12,
-      uvIndex: 3,
+      uvIndex: 4,
     },
     {
       city: 'Wuhan',
@@ -29,7 +29,7 @@ export class WeatherService {
       type: 'sunny',
       minTemp: 18,
       maxTemp: 25,
-      uvIndex: 5,
+      uvIndex: 8,
     },
     {
       city: 'Adliswil',
@@ -37,7 +37,7 @@ export class WeatherService {
       type: 'snowy',
       minTemp: 0,
       maxTemp: 7,
-      uvIndex: 1,
+      uvIndex: 0,
     },
   ];
 

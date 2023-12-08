@@ -31,11 +31,21 @@
   width: 25rem;
 }
 
-.uv-index_text {
+.uv-index {
   position: absolute;
-  font-size: 25px;
   left: 210px;
   bottom: 90px;
+}
+
+.uv-index_text {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.uv-level_text {
+  position: absolute;
+  left: 150px;
+  bottom: 50px;
 }
 
 .uv-min-level_text {
