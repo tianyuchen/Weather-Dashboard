@@ -15,6 +15,7 @@ import {
   switchMap,
   shareReplay,
 } from 'rxjs/operators';
+
 import { LocalStorageService } from '../shared/local-storage.service';
 
 @Component({
@@ -51,10 +52,6 @@ export class SearchLocationComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.setupCitySearch();
-  }
-
-  ngOnDestroy(): void {
-    this.localStorageService.clearData();
   }
 
   setupCitySearch() {
@@ -106,5 +103,11 @@ export class SearchLocationComponent implements AfterViewInit, OnDestroy {
         JSON.stringify(this.searchHistory)
       );
     }
+
+    this.localStorageService.setItem('last-search', city);
+  }
+
+  ngOnDestroy(): void {
+    this.localStorageService.clearData();
   }
 }
