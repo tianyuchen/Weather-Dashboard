@@ -23,7 +23,7 @@ import { LocalStorageService } from '../shared/local-storage.service';
   templateUrl: './search-location.component.html',
   styleUrls: ['./search-location.component.scss'],
 })
-export class SearchLocationComponent implements AfterViewInit, OnDestroy {
+export class SearchLocationComponent implements AfterViewInit {
   @ViewChild('citySearchInput') cityInput!: ElementRef;
   @Output() setcityEvent = new EventEmitter<string>();
 
@@ -105,9 +105,5 @@ export class SearchLocationComponent implements AfterViewInit, OnDestroy {
     }
 
     this.localStorageService.setItem('last-search', city);
-  }
-
-  ngOnDestroy(): void {
-    this.localStorageService.clearData();
   }
 }
