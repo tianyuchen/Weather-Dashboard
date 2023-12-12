@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, filter, map, of } from 'rxjs';
+import { Observable, first, map, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
+import { environment } from 'src/environments/environment';
 import { Weather } from './weather.model';
 
 @Injectable({
@@ -42,7 +44,17 @@ export class WeatherService {
     },
   ];
 
-  constructor() {}
+  private readonly baseURL =
+    'https://api.openweathermap.org/data/2.5/weather?q=';
+  private readonly appID = environment.appID;
+
+  constructor(public http: HttpClient) {}
+
+  getWeather(city: string): Observable<any> {
+    return this.http
+      .get(`${this.baseURL}${city}&APPID=${this.appID}`)
+      .pipe(first());
+  }
 
   getWeatherData(cityName: string): Observable<Weather | undefined> {
     return of(this.weatherData).pipe(
