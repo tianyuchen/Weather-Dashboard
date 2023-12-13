@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { switchMap, shareReplay } from 'rxjs/operators';
+import { switchMap, shareReplay, tap } from 'rxjs/operators';
 import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 
 import { Weather } from '../weather.model';
@@ -17,7 +17,7 @@ export class CityWeatherComponent implements OnChanges {
   cityWeather$: Observable<Weather | undefined> = this.city$.pipe(
     switchMap((name) => {
       if (!name) return of(undefined);
-      return this.weatherService.getWeatherData(name);
+      return this.weatherService.getWeather(name);
     }),
     shareReplay()
   );

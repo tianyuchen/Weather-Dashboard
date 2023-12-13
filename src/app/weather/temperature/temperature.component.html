@@ -11,19 +11,19 @@
       <div class="col-9 d-flex align-items-center">
         <div class="weather-icon__container" [ngSwitch]="true">
           <img
-            *ngSwitchCase="weather.type === 'sunny'"
+            *ngSwitchCase="weather.type === 'Sun'"
             src="assets/weather-icons/sunny.png"
           />
           <img
-            *ngSwitchCase="weather.type === 'cloudy'"
+            *ngSwitchCase="weather.type === 'Clouds'"
             src="assets/weather-icons/sunny-cloudy.png"
           />
           <img
-            *ngSwitchCase="weather.type === 'rainy'"
+            *ngSwitchCase="weather.type === 'Rain'"
             src="assets/weather-icons/rainy.png"
           />
           <img
-            *ngSwitchCase="weather.type === 'snowy'"
+            *ngSwitchCase="weather.type === 'Snow'"
             src="assets/weather-icons/snowy.png"
           />
         </div>
@@ -34,7 +34,7 @@
       <div class="col-3">
         <span class="row">High: {{ weather.maxTemp }}&deg;</span>
         <span class="row">Low: {{ weather.minTemp }}&deg;</span>
-        <span class="row">Feels Like: {{ weather.currTemp }}&deg;</span>
+        <span class="row">Feels Like: {{ weather.feelsLike }}&deg;</span>
       </div>
     </div>
 

@@ -8,5 +8,6 @@ export interface Weather {
   type: string;
   minTemp: number;
   maxTemp: number;
+  feelsLike: number;
   uvIndex: number;
 }

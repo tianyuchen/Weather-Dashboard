@@ -1,66 +1,41 @@
-import { Injectable } from '@angular/core';
-import { Observable, first, map, of } from 'rxjs';
+import { AfterViewInit, Injectable } from '@angular/core';
+import { Observable, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { Weather } from './weather.model';
+import { CurrentWeatherResponse } from './types/current-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherService {
-  private weatherData: Weather[] = [
-    {
-      city: 'Zurich',
-      currTemp: 8,
-      type: 'cloudy',
-      minTemp: 2,
-      maxTemp: 9,
-      uvIndex: 2,
-    },
-    {
-      city: 'Paris',
-      currTemp: 10,
-      type: 'rainy',
-      minTemp: 3,
-      maxTemp: 12,
-      uvIndex: 4,
-    },
-    {
-      city: 'Wuhan',
-      currTemp: 22,
-      type: 'sunny',
-      minTemp: 18,
-      maxTemp: 25,
-      uvIndex: 8,
-    },
-    {
-      city: 'Adliswil',
-      currTemp: 4,
-      type: 'snowy',
-      minTemp: 0,
-      maxTemp: 7,
-      uvIndex: 0,
-    },
-  ];
-
   private readonly baseURL =
     'https://api.openweathermap.org/data/2.5/weather?q=';
-  private readonly appID = environment.appID;
+  private readonly appID = 'af46b8baec3948745c16b4ddaa9ed681';
 
   constructor(public http: HttpClient) {}
 
-  getWeather(city: string): Observable<any> {
+  getWeather(
+    city: string,
+    metric: 'metric' | 'imperial' = 'metric'
+  ): Observable<Weather> {
     return this.http
-      .get(`${this.baseURL}${city}&APPID=${this.appID}`)
-      .pipe(first());
-  }
-
-  getWeatherData(cityName: string): Observable<Weather | undefined> {
-    return of(this.weatherData).pipe(
-      map((weatherList) =>
-        weatherList.find((weather) => weather.city === cityName)
+      .get<CurrentWeatherResponse>(
+        `${this.baseURL}${city}&units=${metric}&APPID=${this.appID}`
       )
-    );
+      .pipe(
+        map((res: CurrentWeatherResponse) => {
+          return {
+            city: res.name,
+            currTemp: Math.round(res.main.temp),
+            type: res.weather[0].main,
+            minTemp: Math.round(res.main.temp_min),
+            maxTemp: Math.round(res.main.temp_max),
+            feelsLike: Math.round(res.main.feels_like),
+            uvIndex: 0,
+          };
+        })
+      );
   }
 }
