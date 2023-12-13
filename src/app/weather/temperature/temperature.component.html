@@ -16,7 +16,7 @@
           />
           <img
             *ngSwitchCase="weather.type === 'Clouds'"
-            src="assets/weather-icons/sunny-cloudy.png"
+            src="assets/weather-icons/cloud.png"
           />
           <img
             *ngSwitchCase="weather.type === 'Rain'"
@@ -25,6 +25,10 @@
           <img
             *ngSwitchCase="weather.type === 'Snow'"
             src="assets/weather-icons/snowy.png"
+          />
+          <img
+            *ngSwitchCase="weather.type === 'Clear'"
+            src="assets/weather-icons/sunny-cloudy.png"
           />
         </div>
         <div>

@@ -43,7 +43,7 @@ export class SearchLocationComponent implements AfterViewInit {
       'London',
       'Beijing',
       'New York',
-      'Shang hai',
+      'Shanghai',
       'Adliswil',
       'Lucerne',
       'Klettgau',

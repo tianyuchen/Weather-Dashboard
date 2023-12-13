@@ -12,7 +12,7 @@ import { CurrentWeatherResponse } from './types/current-response';
 export class WeatherService {
   private readonly baseURL =
     'https://api.openweathermap.org/data/2.5/weather?q=';
-  private readonly appID = 'af46b8baec3948745c16b4ddaa9ed681';
+  private readonly appID = environment.appID;
 
   constructor(public http: HttpClient) {}
 

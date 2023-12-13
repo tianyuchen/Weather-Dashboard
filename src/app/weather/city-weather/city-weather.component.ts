@@ -19,7 +19,8 @@ export class CityWeatherComponent implements OnChanges {
       if (!name) return of(undefined);
       return this.weatherService.getWeather(name);
     }),
-    shareReplay()
+    shareReplay(),
+    tap(console.log)
   );
 
   constructor(private weatherService: WeatherService) {}
