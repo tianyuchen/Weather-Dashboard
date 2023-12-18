@@ -9,27 +9,8 @@
     </div>
     <div class="row mt-5">
       <div class="col-9 d-flex align-items-center">
-        <div class="weather-icon__container" [ngSwitch]="true">
-          <img
-            *ngSwitchCase="weather.type === 'Sun'"
-            src="assets/weather-icons/sunny.png"
-          />
-          <img
-            *ngSwitchCase="weather.type === 'Clouds'"
-            src="assets/weather-icons/cloud.png"
-          />
-          <img
-            *ngSwitchCase="weather.type === 'Rain'"
-            src="assets/weather-icons/rainy.png"
-          />
-          <img
-            *ngSwitchCase="weather.type === 'Snow'"
-            src="assets/weather-icons/snowy.png"
-          />
-          <img
-            *ngSwitchCase="weather.type === 'Clear'"
-            src="assets/weather-icons/sunny-cloudy.png"
-          />
+        <div class="weather-icon__container" id="weather-icon">
+          <img src="assets/weather-icons/{{ weather.type }}.png" />
         </div>
         <div>
           <span class="curr-temp">{{ weather.currTemp }}&deg;</span>

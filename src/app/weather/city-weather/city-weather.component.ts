@@ -2,8 +2,8 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { switchMap, shareReplay, tap } from 'rxjs/operators';
 import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 
-import { Weather } from '../weather.model';
-import { WeatherService } from '../weather.service';
+import { Weather } from '../../shared/weather.model';
+import { WeatherService } from '../../../services/weather.service';
 
 @Component({
   selector: 'app-city-weather',
