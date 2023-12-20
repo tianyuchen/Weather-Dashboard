@@ -1,2 +1,5 @@
-<app-search-location (setcityEvent)="selectCity($event)"></app-search-location>
+<!-- <app-search-location (setcityEvent)="selectCity($event)"></app-search-location> -->
+<app-geocoder-autocomplete
+  (setcityEvent)="selectCity($event)"
+></app-geocoder-autocomplete>
 <app-city-weather [city]="city"></app-city-weather>

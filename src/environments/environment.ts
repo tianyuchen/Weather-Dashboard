@@ -4,5 +4,6 @@
 
 export const environment = {
   production: false,
-  appID: '',
+  openWeatherApiKey: '',
+  geoapifyApiKey: '',
 };
