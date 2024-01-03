@@ -1,10 +1,14 @@
-import { AfterViewInit, Injectable } from '@angular/core';
-import { Observable, map, tap } from 'rxjs';
+import { ErrorHandler, Injectable } from '@angular/core';
+import { Observable, map, catchError, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { Weather } from '../app/shared/weather.model';
 import { CurrentWeatherResponse } from '../app/weather/types/current-response';
+
+declare interface WeatherApiError {
+  error: { message: string };
+}
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +23,7 @@ export class WeatherService {
   getWeather(
     city: string,
     metric: 'metric' | 'imperial' = 'metric'
-  ): Observable<Weather> {
+  ): Observable<Weather | undefined> {
     return this.http
       .get<CurrentWeatherResponse>(
         `${this.weatherBaseUrl}${city}&units=${metric}&APPID=${this.appID}`
@@ -35,7 +39,21 @@ export class WeatherService {
             feelsLike: Math.round(res.main.feels_like),
             uvIndex: 0,
           };
-        })
+        }),
+        catchError((err) =>
+          throwError(() => {
+            if (typeof err === 'string') {
+              return err;
+            }
+            if (err instanceof Error) {
+              return err.message;
+            }
+            if (typeof err === 'object') {
+              return (err as WeatherApiError).error.message;
+            }
+            return 'Unknown error';
+          })
+        )
       );
   }
 }

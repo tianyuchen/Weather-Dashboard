@@ -2,3 +2,5 @@
   <app-temperature [weather]="weather"></app-temperature>
   <app-uv-index [uvIndex]="weather.uvIndex"></app-uv-index>
 </div>
+
+<app-error [message]="weatherError$ | async"></app-error>

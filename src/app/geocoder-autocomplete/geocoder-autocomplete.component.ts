@@ -10,6 +10,8 @@ export class GeocoderAutocompleteComponent {
   @Output() setcityEvent = new EventEmitter<string>();
 
   onPlaceSelected(place: any): void {
-    this.setcityEvent.emit(place.properties.address_line1);
+    console.log('Selected Place:', place.properties.city);
+    console.log('Place:', place);
+    this.setcityEvent.emit(place.properties.city);
   }
 }

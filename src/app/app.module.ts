@@ -15,6 +15,7 @@ import { SunriseSunsetComponent } from './weather/sunrise-sunset/sunrise-sunset.
 import { UvIndexComponent } from './weather/uv-index/uv-index.component';
 import { CityWeatherComponent } from './weather/city-weather/city-weather.component';
 import { GeocoderAutocompleteComponent } from './geocoder-autocomplete/geocoder-autocomplete.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { GeocoderAutocompleteComponent } from './geocoder-autocomplete/geocoder-
     UvIndexComponent,
     CityWeatherComponent,
     GeocoderAutocompleteComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
